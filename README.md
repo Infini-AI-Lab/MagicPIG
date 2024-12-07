@@ -2,9 +2,10 @@
 <h1><img src="images/MGPF.jpg" height="40px" align="top"/> MagicPIG-v0.2: LSH sampling for Efficient LLM Generation
 </h1>
 
-By Zhuoming Chen, Ranajoy Sadhukhan, Zihao Ye, Yang Zhou, Jianyu Zhang, Niklas Nolte, Yuandong Tian, Matthijs Douze, Leon Bottou, Zhihao Jia, Beidi Chen
+Zhuoming Chen, Ranajoy Sadhukhan, Zihao Ye, Yang Zhou, Jianyu Zhang, Niklas Nolte, Yuandong Tian, Matthijs Douze, Leon Bottou, Zhihao Jia, Beidi Chen
 
 For exploring the possibility of **GPU-CPU** system powered by Locality-Sensitive-Hashing.
+</div>
 
 <div align="center">
 [<a href="https://arxiv.org/abs/2410.16179">Paper</a>] | [<a href="www.lsh-ai.com">Blog</a>]
@@ -35,6 +36,7 @@ Compared with the initial release, we upgrade the followings to achieve much hig
     conda activate magicpig
   
     bash install.sh
+
 
 **Hardware requirements:** 
 Basic: Intel CPUs supporting AVX512. 
