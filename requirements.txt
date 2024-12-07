@@ -1,0 +1,6 @@
+transformers==4.43.1
+sentencepiece
+protobuf
+jsonlines
+pytest
+
