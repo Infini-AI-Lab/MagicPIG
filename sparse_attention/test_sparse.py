@@ -54,7 +54,7 @@ head_dim: int
     for i in range(batch_size * num_attention_heads):
             ind[i][:nnz[i]] = torch.randperm(seq_len)[:nnz[i]].int()
     
-    attn_server.attention_wrapper_bf16(layer, K, L, output, max_value_expsum, query, query_norm, ind, nnz)
+    attn_server.attention_wrapper(layer, K, L, output, max_value_expsum, query, query_norm, ind, nnz)
     score = attn_server.get_score()
 
     score = score.view(batch_size * num_attention_heads, max_length)

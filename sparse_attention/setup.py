@@ -11,9 +11,25 @@ def supports_avx512_bf16():
     except Exception:
         return False
 
+def is_gcc_version_greater_than_12():
+    try:
+        # 获取 gcc 版本信息
+        result = subprocess.run(["gcc", "-dumpversion"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+        if result.returncode == 0:
+            # 提取版本号
+            version_str = result.stdout.strip()
+            major_version = int(version_str.split('.')[0])  # 获取主版本号
+            return major_version > 12
+        else:
+            print("GCC is not installed or not found in the PATH.")
+            return False
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return False
+
 # Check for AVX512_BF16 support
 avx_flags = []
-if supports_avx512_bf16():
+if supports_avx512_bf16() and is_gcc_version_greater_than_12():
     avx_flags.extend(["-mavx512bf16"])
 
 
