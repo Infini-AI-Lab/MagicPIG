@@ -2,11 +2,11 @@
 
 ## Installation
 
-  conda create -n magicpig
+   conda create -n magicpig
   
-  conda activate magicpig
+   conda activate magicpig
   
-  bash install.sh
+   bash install.sh
 
 Hardware requirements: Intel CPUs supporting AVX512. Recommended Python version: 3.9/3.10.
 
