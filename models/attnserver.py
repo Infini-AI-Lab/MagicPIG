@@ -297,7 +297,7 @@ class LSHSparseAttnServer:
             
             
             self.lsh_retriever.batch_retrieve(layer_idx,self.pinned_hashcode, self.results_lsh_cpu, self.nnz)
-            self.attn_server.attention_wrapper_bf16(layer_idx, self.K, self.L, self.output, self.max_value_expsum, self.pinned_query, self.pinned_query.float().norm(p=2, dim=-1), self.results_lsh_cpu, self.nnz)
+            self.attn_server.attention_wrapper(layer_idx, self.K, self.L, self.output, self.max_value_expsum, self.pinned_query, self.pinned_query.float().norm(p=2, dim=-1), self.results_lsh_cpu, self.nnz)
             
             self.max_value_expsum_cuda.copy_(self.max_value_expsum[1], non_blocking=True)
             self.output_cuda.copy_(self.output, non_blocking=True)

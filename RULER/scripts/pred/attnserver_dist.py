@@ -1,7 +1,17 @@
 from transformers import LlamaConfig
 import torch
-from lsh import LSH 
-from sparse_attention_cpu import SparseAttentionServer
+try:
+    from lsh import LSH
+except ImportError as e:
+    print(f"Failed to import LSH: {e}")
+    LSH = None
+
+try:
+    from sparse_attention_cpu import SparseAttentionServer
+except ImportError as e:
+    print(f"Failed to import SparseAttentionServer: {e}")
+    SparseAttentionServer = None
+
 import flashinfer
 import torch.distributed as dist
 import math
@@ -94,7 +104,7 @@ class QuestAttnServer:
         
         incoming = key_cache.shape[-2] # [bsz, num_kv_heads, incoming, head_dim]
         self.prefill = incoming
-        self.sparse_budget = int (0.0375 * self.prefill)
+        self.sparse_budget = int (0.04 * self.prefill)
         self.v_cache_cpu[layer_idx][:, :, :incoming] = value_cache.clone()
         self.k_cache_cpu[layer_idx][:, :, :incoming] = key_cache.clone()
 
@@ -103,8 +113,6 @@ class QuestAttnServer:
         
         self.chunk_end = self.chunks * self.chunk_size
         
-        #assert self.select_sets * self.chunk_size == self.sparse_budget, f"({self.select_sets}) * {self.chunk_size} != {self.sparse_budget}"
-
         key_states_roped_ctx = key_cache[:,:,:self.chunks*self.chunk_size].view(self.batch_size, self.num_key_value_heads, self.chunks, self.chunk_size, self.head_dim)
         
         k_landmark_max = key_states_roped_ctx.min(dim=-2).values
