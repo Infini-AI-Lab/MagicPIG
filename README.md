@@ -1,6 +1,7 @@
 # MagicPIG-v0.2
 
 ## Installation
+
  conda create -n magicpig
  conda activate magicpig
  bash install.sh
