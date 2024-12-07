@@ -39,6 +39,7 @@ Compared with the initial release, we upgrade the followings to achieve much hig
 
 
 **Hardware requirements:** 
+
 Basic: Intel CPUs supporting AVX512. 
 
 BFloat16: Intel CPUs supporting AVX512_BF16, GCC Version $\geq$ 12.
