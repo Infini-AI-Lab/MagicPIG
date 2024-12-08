@@ -112,7 +112,7 @@ We implement 3 versions of MagicPIG for different purposes.
 ### Install RULER environments
 **Commands:**
 
-    cd RULER/scripts
+    cd evaluations/RULER
     pip install -r requirements.txt
 
 ### Tensor Parallelism (GPU + Mask)
@@ -121,7 +121,7 @@ We implement a mathematically equivalent version with tensor parallelism for fas
 
 **Commands:**
 
-    cd RULER/scripts
+    cd evaluations/RULER
     bash run.sh llama3-8b-chat-128k synthetic $K $L
 
 replace K and L with the hyper-parameter you want to evaluate. 
@@ -136,7 +136,7 @@ We implement a mathematically equivalent version with huggingface for fast evalu
 
 **Commands:**
 
-    cd RULER/scripts
+    cd evaluations/RULER
     bash run_single_gpu.sh llama3-8b-chat-128k synthetic $K $L 4 64 $method 0
 
 replace K and L with the hyper-parameter you want to evaluate.
@@ -155,12 +155,12 @@ This will call the compiled lsh and sparse_attention_cpu to execute the proposed
 
 **Manual Change:**
 
-- `Line 84, RULER/scripts/run.sh`: --nproc_per_node=8 $\rightarrow$ --nproc_per_node=1
-- `Line 84, RULER/scripts/pred/llama_dist.py`: LSHSparseAttnServerMasked $\rightarrow$  LSHSparseAttnServer
+- `Line 84, evaluations/RULER/run.sh`: --nproc_per_node=8 $\rightarrow$ --nproc_per_node=1
+- `Line 84, evaluations/RULER/pred/llama_dist.py`: LSHSparseAttnServerMasked $\rightarrow$  LSHSparseAttnServer
 
 **Commands:**
 
-    cd RULER/scripts
+    cd evaluations/RULER
     bash run.sh llama3-8b-chat-128k synthetic $K $L
 
 ## Reference
