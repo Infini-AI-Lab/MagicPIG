@@ -23,7 +23,7 @@ Compared with the initial release, we upgrade the followings to achieve much hig
 <div align="center">
 <img src="images/Throughput_Improved.jpg" align="top"/>
 <img src="images/batch_size_vs_throughput.png" align="top"/>
-<figcaption>MagicPIG improves decoding throughput in various regimes by 1.76-4.99x compared with GPU-only attention. Here, we use L20 GPUs with Intel 8583 to simulate different sizes of VRAM. 
+<figcaption>MagicPIG improves decoding throughput in various regimes by 1.76-4.99x compared with GPU-only attention. Here, we use L20 GPUs with Intel 8563C to simulate different sizes of VRAM. 
 </figcaption>
 </div>
 
