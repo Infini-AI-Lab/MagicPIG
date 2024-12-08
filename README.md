@@ -64,10 +64,15 @@ Recommended Python version: 3.9/3.10.
 
 **Explanations:**
  `--model` : Name or path for a huggingface model (Only Llamas are supported currently).
+
  `--M`: Maximum sequence length for pre-allocated the VRAM. It should be larger than context length + generation length.
+
  `--G`: Generation length.
+
  `--K, --L`: LSH hyper-parameter (when K=0, we use full attention).
+
  `--template`: Chat template (only support meta-llama3 and meta-llama2 currently).
+
  `--data`: Source data for generation (.txt file).
 
 
@@ -83,14 +88,18 @@ Recommended Python version: 3.9/3.10.
     --P 98000 \ 
     --M 98304 \ 
     --K 10 \ 
-    --L 150 \
+    --L 150
 
 
 **Explanations:**
  `--model` : Name or path for a huggingface model (Only Llamas are supported currently).
- `--M`: Maximum sequence length for pre-allocated the VRAM. It should be larger than `--M` (by at least 192). 
+
+ `--M`: Maximum sequence length for pre-allocated the VRAM. It should be larger than `--M` (by at least 192).
+
  `--P`: Actual context length for benchmarking. 
+
  `--B`: Batch Size.
+
  `--K, --L`: LSH hyper-parameter (when K=0, we use full attention).
  
 
@@ -133,7 +142,9 @@ We implement a mathematically equivalent version with huggingface for fast evalu
 replace K and L with the hyper-parameter you want to evaluate.
 
 `$method`: 0: MagicPIG; 1: Quest; 2: TopK 3: Oracle Sampling
+
 `$K`: LSH hyper-parameter for MagicPIG and Page Size for Quest
+
 `$L`: LSH hyper-parameter for MagicPIG and number of selected pages for Quest
 
 Pipeline parallelism can be enabled with Accelerator by adding more GPU ids in `Line 26` of `run_single_gpu.sh`.
