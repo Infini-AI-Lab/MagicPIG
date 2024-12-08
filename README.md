@@ -122,6 +122,7 @@ We implement a mathematically equivalent version with tensor parallelism for fas
 **Commands:**
 
     cd evaluations/RULER
+    python download_nltk.py
     bash run.sh llama3-8b-chat-128k synthetic $K $L
 
 replace K and L with the hyper-parameter you want to evaluate. 
@@ -137,6 +138,7 @@ We implement a mathematically equivalent version with huggingface for fast evalu
 **Commands:**
 
     cd evaluations/RULER
+    python download_nltk.py
     bash run_single_gpu.sh llama3-8b-chat-128k synthetic $K $L 4 64 $method 0
 
 replace K and L with the hyper-parameter you want to evaluate.
@@ -161,6 +163,7 @@ This will call the compiled lsh and sparse_attention_cpu to execute the proposed
 **Commands:**
 
     cd evaluations/RULER
+    python download_nltk.py
     bash run.sh llama3-8b-chat-128k synthetic $K $L
 
 ## Reference
