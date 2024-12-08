@@ -6,8 +6,6 @@ import jsonlines
 from template import Templates
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=str, default="meta-llama/Meta-Llama-3.1-8B-Instruct",help='model')
-parser.add_argument('--T', type=int, default=2000, help='repeat times')
-parser.add_argument('--B', type=int, default=1, help='batch size')
 parser.add_argument('--M', type=int, default=8192, help='max length')
 parser.add_argument('--D', type=int, default=1, help='dec length')
 parser.add_argument('--G', type=int, default=256, help='generation length')
@@ -24,7 +22,7 @@ MODEL_NAME = args.model
 DTYPE = torch.bfloat16
 DEVICE = "cuda:0"
 chat_template = Templates[args.template]
-llm = LLM(K=args.K, L=args.L, max_length=MAX_LEN, model_name=args.model, batch_size=args.B, device=DEVICE, dtype=DTYPE, generation_buffer=args.G + 32)
+llm = LLM(K=args.K, L=args.L, max_length=MAX_LEN, model_name=args.model, batch_size=1, device=DEVICE, dtype=DTYPE, generation_buffer=args.G + 32)
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 with open(args.data, "r", encoding="utf-8") as file:
     content = file.read()

@@ -1,5 +1,5 @@
 <div align="center">
-<h1><img src="images/MGPF.jpg" height="40px" align="top"/> MagicPIG-v0.2: LSH sampling<br>for Efficient LLM Generation
+<h1><img src="assets/MGPF.jpg" height="40px" align="top"/> MagicPIG-v0.2: LSH sampling<br>for Efficient LLM Generation
 </h1>
 
 Zhuoming Chen, Ranajoy Sadhukhan, Zihao Ye, Yang Zhou, Jianyu Zhang, Niklas Nolte, Yuandong Tian, Matthijs Douze, Leon Bottou, Zhihao Jia, Beidi Chen
@@ -21,8 +21,8 @@ Compared with the initial release, we upgrade the followings to achieve much hig
 -  Overlap hash table construction and prefilling to hide CPU overhead.
 
 <div align="center">
-<img src="images/Throughput_Improved.jpg" align="top"/>
-<img src="images/batch_size_vs_throughput.png" align="top"/>
+<img src="assets/Throughput_Improved.jpg" align="top"/>
+<img src="assets/batch_size_vs_throughput.png" align="top"/>
 <figcaption>MagicPIG improves decoding throughput in various regimes by 1.76-4.99x compared with GPU-only attention. Here, we use L20 GPUs with Intel 8563C to simulate different sizes of VRAM. 
 </figcaption>
 </div>

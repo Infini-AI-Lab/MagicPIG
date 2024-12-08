@@ -6,7 +6,6 @@ import jsonlines
 import time
 parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=str, default="meta-llama/Meta-Llama-3.1-8B-Instruct",help='model')
-parser.add_argument('--T', type=int, default=2000, help='repeat times')
 parser.add_argument('--B', type=int, default=1, help='batch size')
 parser.add_argument('--M', type=int, default=98304, help='max length')
 parser.add_argument('--D', type=int, default=1, help='dec length')
@@ -24,7 +23,6 @@ MODEL_NAME = args.model
 DTYPE = torch.bfloat16
 PREFIX_LEN = args.P
 DEVICE = "cuda:0"
-T = args.T
 WARM_UP = 32
 
 with open("../data/data.jsonl") as f:

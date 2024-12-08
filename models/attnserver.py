@@ -342,7 +342,7 @@ class AttnServer:
         num_local_tokens :int = 64,
         generation_buffer :int = 256,
         max_length: int = 8192,
-        dense_layers: list[int] = [],
+        dense_layers: list[int] = list(range(32)),
         device :str = 'cuda:0',
         dtype = torch.bfloat16) -> None:
         
