@@ -105,19 +105,14 @@ Recommended Python version: 3.9/3.10.
 
 ## Evaluations
 
-Not all users/developpers have AVX512 machines. **You can still test the accuracy of MagicPIG even if you cannot finish the installation.** Here we use RULER as an example.
-
-We implement 3 versions of MagicPIG for different purposes.
-
 ### Install RULER environments
+
 **Commands:**
 
     cd evaluations/RULER
     pip install -r requirements.txt
 
-### Tensor Parallelism (GPU + Mask)
-
-We implement a mathematically equivalent version with tensor parallelism for fast evaluations. 
+### Run RULER Benchmark
 
 **Commands:**
 
@@ -125,15 +120,37 @@ We implement a mathematically equivalent version with tensor parallelism for fas
     python download_nltk.py
     bash run.sh llama3-8b-chat-128k synthetic $K $L
 
-replace K and L with the hyper-parameter you want to evaluate. 
+replace `K` and `L` with the hyper-parameter you want to evaluate. 
 
 Currently, we support the following models.
 
 `llama3-8b-chat-128k`: [[meta-llama/Llama-3.1-8B-Instruct](https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct)],  `llama3-8b-chat-512k`: [[princeton-nlp/Llama-3-8B-ProLong-512k-Instruct](https://huggingface.co/princeton-nlp/Llama-3-8B-ProLong-512k-Instruct)],  `mistral-7b-chat-512k`: [[aws-prototyping/MegaBeam-Mistral-7B-512k](https://huggingface.co/aws-prototyping/MegaBeam-Mistral-7B-512k)], `llama3-70b-chat-128k`: [[meta-llama/Llama-3.1-70B-Instruct](https://huggingface.co/meta-llama/Llama-3.1-70B-Instruct)],
 
+
+**Notice:**
+This will call the compiled lsh and sparse_attention_cpu to execute the proposed systems in the paper. **Require lsh and sparse_attention_cpu are successfully installed.**
+
+
+Not all users/developpers have AVX512 machines. **You can still test the accuracy of MagicPIG even if you cannot finish the installation.**.
+
+We implement another two versions of MagicPIG for different purposes.
+
+### Tensor Parallelism (GPU + Mask)
+
+We implement a mathematically equivalent version with tensor parallelism.  
+
+**Commands:**
+
+    cd evaluations/RULER
+    python download_nltk.py
+    bash run_tensor_parallel.sh llama3-8b-chat-128k synthetic $K $L
+
+replace K and L with the hyper-parameter you want to evaluate. 
+
+
 ### Single GPU (Huggingface + Mask)
 
-We implement a mathematically equivalent version with huggingface for fast evaluations when exported to other frameworks.
+We implement a mathematically equivalent version with huggingface for easy-exporting to other evaluation frameworks (e.g., lm-eval-harness, LongBench).
 
 **Commands:**
 
@@ -149,22 +166,8 @@ replace K and L with the hyper-parameter you want to evaluate.
 
 `$L`: LSH hyper-parameter for MagicPIG and number of selected pages for Quest
 
-Pipeline parallelism can be enabled with Accelerator by adding more GPU ids in `Line 26` of `run_single_gpu.sh`.
+Pipeline parallelism can be enabled with Accelerate by adding more GPU ids in `Line 26` of `run_single_gpu.sh`.
 
-### CPU + single GPU
-
-This will call the compiled lsh and sparse_attention_cpu to execute the proposed systems in the paper. **Require lsh and sparse_attention_cpu are successfully installed.**
-
-**Manual Change:**
-
-- `Line 84, evaluations/RULER/run.sh`: --nproc_per_node=8 $\rightarrow$ --nproc_per_node=1
-- `Line 84, evaluations/RULER/pred/llama_dist.py`: LSHSparseAttnServerMasked $\rightarrow$  LSHSparseAttnServer
-
-**Commands:**
-
-    cd evaluations/RULER
-    python download_nltk.py
-    bash run.sh llama3-8b-chat-128k synthetic $K $L
 
 ## Reference
 ```bibtex
