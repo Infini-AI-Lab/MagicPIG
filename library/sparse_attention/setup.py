@@ -2,7 +2,7 @@ from torch.utils.cpp_extension import CppExtension
 import setuptools
 
 import cpuinfo
-
+import subprocess
 def supports_avx512_bf16():
     """Check if the CPU supports AVX512_BF16."""
     try:
@@ -11,7 +11,7 @@ def supports_avx512_bf16():
     except Exception:
         return False
 
-def is_gcc_version_greater_than_12():
+def is_gcc_version_greater_than_11():
     try:
         # 获取 gcc 版本信息
         result = subprocess.run(["gcc", "-dumpversion"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
@@ -19,7 +19,7 @@ def is_gcc_version_greater_than_12():
             # 提取版本号
             version_str = result.stdout.strip()
             major_version = int(version_str.split('.')[0])  # 获取主版本号
-            return major_version > 12
+            return major_version > 10
         else:
             print("GCC is not installed or not found in the PATH.")
             return False
@@ -29,10 +29,8 @@ def is_gcc_version_greater_than_12():
 
 # Check for AVX512_BF16 support
 avx_flags = []
-if supports_avx512_bf16() and is_gcc_version_greater_than_12():
+if supports_avx512_bf16() and is_gcc_version_greater_than_11():
     avx_flags.extend(["-mavx512bf16"])
-
-
 # Define the extension modules
 ext_modules = [
     CppExtension(

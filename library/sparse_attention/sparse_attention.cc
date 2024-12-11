@@ -519,6 +519,11 @@ const int nnz) {
 
 SparseAttentionServer::SparseAttentionServer(){
     this->allocated = false;
+    #ifdef __AVX512BF16__
+    std::cout << "USING AVX512 BFLOAT16" << std::endl;
+    #else
+    std::cout << "NOT USING AVX512 BFLOAT16" << std::endl;
+    #endif
 }
 
 SparseAttentionServer::~SparseAttentionServer(){
