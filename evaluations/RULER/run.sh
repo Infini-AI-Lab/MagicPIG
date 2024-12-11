@@ -81,7 +81,7 @@ for MAX_SEQ_LENGTH in "${SEQ_LENGTHS[@]}"; do
         
         CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 \
             OMP_NUM_THREADS=96 \
-            torchrun --nproc_per_node=8 pred/xllm_gen.py \
+            torchrun --nproc_per_node=1 pred/xllm_gen.py \
             --data_dir ${DATA_DIR} \
             --save_dir ${PRED_DIR} \
             --benchmark ${BENCHMARK} \

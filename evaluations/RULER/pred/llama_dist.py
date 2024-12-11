@@ -120,8 +120,12 @@ class LLM:
         
         torch.cuda.set_device(self.rank)
         if K > 0:
-            self.attention_server = LSHSparseAttnServerMasked(config=self.config, K=K, L=L, batch_size=self.batch_size, 
-        max_length=self.max_length, device=self.device, dtype=self.dtype)
+            if self.world_size == 1:
+                self.attention_server = LSHSparseAttnServer(config=self.config, K=K, L=L, batch_size=self.batch_size, 
+            max_length=self.max_length, device=self.device, dtype=self.dtype)
+            else:
+                self.attention_server = LSHSparseAttnServerMasked(config=self.config, K=K, L=L, batch_size=self.batch_size, 
+            max_length=self.max_length, device=self.device, dtype=self.dtype)
         elif K == 0:
             self.attention_server = AttnServer(config=self.config, K=K, L=L, batch_size=self.batch_size, 
         max_length=self.max_length, device=self.device, dtype=self.dtype)
