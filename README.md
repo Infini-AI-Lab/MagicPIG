@@ -2,7 +2,10 @@
 <h1><img src="assets/MGPF.jpg" height="40px" align="top"/> MagicPIG-v0.2: LSH sampling<br>for Efficient LLM Generation
 </h1>
 
-Zhuoming Chen, Ranajoy Sadhukhan, Zihao Ye, Yang Zhou, Jianyu Zhang, Niklas Nolte, Yuandong Tian, Matthijs Douze, Leon Bottou, Zhihao Jia, Beidi Chen
+Zhuoming Chen<sup>1</sup>, Ranajoy Sadhukhan<sup>1</sup>, Zihao Ye<sup>2</sup>, Yang Zhou<sup>1</sup>, Jianyu Zhang<sup>3,4</sup>, Niklas Nolte<sup>4</sup>, Yuandong Tian<sup>4</sup>, Matthijs Douze<sup>4</sup>, Leon Bottou<sup>3,4</sup>, Zhihao Jia<sup>1</sup>, Beidi Chen<sup>1</sup>
+
+<sup>1</sup> Carnegie Mellon University,   <sup>2</sup>University of Washington, <sup>3</sup>New York University, <sup>4</sup>FAIR 
+
 
 For exploring the possibility of **GPU-CPU** system powered by Locality-Sensitive-Hashing.
 </div>
@@ -13,12 +16,11 @@ For exploring the possibility of **GPU-CPU** system powered by Locality-Sensitiv
 <br>
 
 
-## Updates
-Compared with the initial release, we upgrade the followings to achieve much higher throughputs.
+## *Latest News 📣*
 
-- Use FlashInfer to compute the GPU attention parts.
-- Implement more efficient CPU sparse attention with thread scheduling.
--  Overlap hash table construction and prefilling to hide CPU overhead.
+- [2024.12] Use FlashInfer to compute the GPU attention parts.
+- [2024.12] More efficient and easy-to-use CPU sparse attention.
+- [2024.12] Overlap hash table construction and prefilling to hide CPU overhead.
 
 <div align="center">
 <img src="assets/Throughput_Improved.jpg" align="top"/>
@@ -42,7 +44,7 @@ Compared with the initial release, we upgrade the followings to achieve much hig
 
 Basic: Intel CPUs supporting AVX512. 
 
-BFloat16: Intel CPUs supporting AVX512_BF16, GCC Version $\geq$ 12.
+BFloat16: Intel CPUs supporting AVX512_BF16, GCC Version $\geq$ 11.
 
 Recommended Python version: 3.9/3.10. 
 
@@ -168,6 +170,8 @@ replace K and L with the hyper-parameter you want to evaluate.
 
 Pipeline parallelism can be enabled with Accelerate by adding more GPU ids in `Line 26` of `run_single_gpu.sh`.
 
+
+----------
 
 ## Reference
 ```bibtex
