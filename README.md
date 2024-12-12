@@ -22,13 +22,25 @@ For exploring the possibility of **GPU-CPU** system powered by Locality-Sensitiv
 - [2024.12] More efficient and easy-to-use CPU sparse attention.
 - [2024.12] Overlap hash table construction and prefilling to hide CPU overhead.
 
-<div align="center">
-<img src="assets/Throughput_Improved.jpg" align="top"/>
-<img src="assets/batch_size_vs_throughput.png" align="top"/>
-<figcaption>MagicPIG improves decoding throughput in various regimes by 1.76-4.99x compared with GPU-only attention. Here, we use L20 GPUs with Intel 8563C to simulate different sizes of VRAM. 
-</figcaption>
-</div>
+<table>
+<tr>
+<td> <img src="assets/Throughput_Improved.jpg" align="top"/>
+<td> <img src="assets/batch_size_vs_throughput.png" align="top" width="1000"/>
+</tr>
+<caption>
+MagicPIG improves decoding throughput in various regimes by 1.76-4.99x compared with GPU-only attention. Here, we use L20 GPUs with Intel 8563C to simulate different sizes of VRAM. 
+</caption>
+</table>
 
+<table>
+<tr>
+<td> <img src="assets/RULER.png" align="top"/>
+<td> <img src="assets/Reasoning.png" align="top"/>
+</tr>
+<caption>
+MagicPIG achieves higher downstream accuracy in retrieval and reasoning tasks than Quest, the state-of-the-art baseline with lower computation.  K10L150 and K11L300 correspond to 2% computation cost while K10L170 corresponds to 2.5%.
+</caption>
+</table>
 
 ## Installation
 **Commands:**
