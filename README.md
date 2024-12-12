@@ -25,7 +25,7 @@ For exploring the possibility of **GPU-CPU** system powered by Locality-Sensitiv
 <table>
 <tr>
 <td> <img src="assets/Throughput_Improved.jpg" align="top"/>
-<td> <img src="assets/batch_size_vs_throughput.png" align="top" width="1000"/>
+<td> <img src="assets/batch_size_vs_throughput.png" align="top" width="1200"/>
 </tr>
 <caption>
 MagicPIG improves decoding throughput in various regimes by 1.76-4.99x compared with GPU-only attention. Here, we use L20 GPUs with Intel 8563C to simulate different sizes of VRAM. 
