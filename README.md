@@ -6,8 +6,8 @@ Zhuoming Chen<sup>1</sup>, Ranajoy Sadhukhan<sup>1</sup>, Zihao Ye<sup>2</sup>, 
 
 <sup>1</sup> Carnegie Mellon University,   <sup>2</sup>University of Washington, <sup>3</sup>New York University, <sup>4</sup>FAIR 
 
-
-For exploring the possibility of **GPU-CPU** system powered by Locality-Sensitive-Hashing.
+----------
+*For exploring the possibility of **GPU-CPU** system powered by Locality-Sensitive-Hashing.*
 </div>
 
 <div align="center">
@@ -15,6 +15,7 @@ For exploring the possibility of **GPU-CPU** system powered by Locality-Sensitiv
 </div>
 <br>
 
+----------
 
 ## *Latest News 📣*
 
@@ -182,6 +183,14 @@ replace K and L with the hyper-parameter you want to evaluate.
 
 Pipeline parallelism can be enabled with Accelerate by adding more GPU ids in `Line 26` of `run_single_gpu.sh`.
 
+
+----------
+This project was made possible thanks to a collaboration with
+
+<a href="https://www.cmu.edu"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Carnegie_Mellon_wordmark.svg" height="20"></a> &nbsp;&nbsp;&nbsp;
+<a href="https://www.washington.edu/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/University_of_Washington_signature.svg/2560px-University_of_Washington_signature.svg.png" height="25"></a> &nbsp;&nbsp;&nbsp;
+<a href="https://www.nyu.edu/"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/5/58/NYU_logo.svg/2560px-NYU_logo.svg.png" height="21"></a> &nbsp;&nbsp;&nbsp;
+<a href="https://ai.meta.com/research/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Meta_Platforms_Inc._logo.svg/2560px-Meta_Platforms_Inc._logo.svg.png" height="21"></a> &nbsp;&nbsp;&nbsp;
 
 ----------
 
