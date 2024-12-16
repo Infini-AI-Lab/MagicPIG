@@ -79,6 +79,7 @@ Recommended Python version: 3.9/3.10.
     --data ../data/story.txt
 
 **Explanations:**
+
  `--model` : Name or path for a huggingface model (Only Llamas are supported currently).
 
  `--M`: Maximum sequence length for pre-allocated the VRAM. It should be larger than context length + generation length.
