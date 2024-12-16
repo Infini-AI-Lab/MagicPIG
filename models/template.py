@@ -14,5 +14,6 @@
 
 Templates = {
     'meta-llama2': "[INST] {} [/INST]",
-    'meta-llama3': "<|begin_of_text|><|start_header_id|>user<|end_header_id|>\n\n{}<|eot_id|>\n<|start_header_id|>assistant<|end_header_id|>\n\n",
+    'meta-llama3': "<|begin_of_text|><|start_header_id|>user<|end_header_id|>\n\n{}<|eot_id|>\n<|start_header_id|>assistant<|end_header_id|>\n",
+    'None': "{}",
 }

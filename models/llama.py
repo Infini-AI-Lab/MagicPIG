@@ -6,6 +6,7 @@ import gc
 from .utils import apply_rotary_pos_emb, layer_norm, topp_temperature_decode
 import flashinfer
 from .attnserver import LSHSparseAttnServer, AttnServer
+import time
 class LLMLayer:
     def __init__(self, layer_idx) -> None:
         
@@ -328,13 +329,16 @@ class LLM:
         input_ids: torch.LongTensor, 
         max_tokens: int = 128,
         temperature: float = 0.6,
-        topp: float = 0.9):
+        topp: float = 0.9,
+        verbose: bool = False):
         
         generated = []
         prefix_len = input_ids.shape[1]
         position_ids = torch.arange(prefix_len + max_tokens, device=self.device).unsqueeze(0)
         logits = self.prefill(input_ids=input_ids)
-        
+        torch.cuda.synchronize()
+        if verbose:
+            t1 = time.time()
         for k in range(max_tokens):
             if temperature < 0.1:
                 input_ids = logits.argmax(dim=-1)
@@ -344,6 +348,12 @@ class LLM:
             generated.append(input_ids[0].item())
             if input_ids[0].item() in self.eos_tokens:
                 break
+        if verbose:
+            torch.cuda.synchronize()
+            t2 = time.time()
+            print("\033[94m[INFO] Prefill {} tokens\033[0m".format(prefix_len))
+            print("\033[94m[INFO] Generate {} tokens\033[0m".format(len(generated)))
+            print("\033[94m[INFO] Decoding Latency {:.2f} ms/token\033[0m".format(1000 * (t2 - t1)/len(generated)))
         self.attention_server.clear()
         self.k_cache.zero_()
         self.v_cache.zero_()

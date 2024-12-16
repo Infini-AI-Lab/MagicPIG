@@ -11,6 +11,7 @@ parser.add_argument('--model', type=str, default="meta-llama/Meta-Llama-3.1-8B-I
 parser.add_argument('--M', type=int, default=8192, help='max length')
 parser.add_argument('--D', type=int, default=1, help='dec length')
 parser.add_argument('--G', type=int, default=256, help='generation length')
+parser.add_argument('--t', type=float, default=0.6, help='temperature')
 parser.add_argument('--K', type=int, default=10, help='K')
 parser.add_argument('--L', type=int, default=150, help='K')
 parser.add_argument('--data', type=str, default="../data/story.txt", help='source data file')
@@ -35,7 +36,7 @@ with open(args.data, "r", encoding="utf-8") as file:
     input_ids = input_ids.to(DEVICE)
     PREFIX_LEN = input_ids.shape[1]
     position_ids = torch.arange(MAX_LEN, device=DEVICE).unsqueeze(0)
-    generated = llm.generate(input_ids, max_tokens=args.G)
+    generated = llm.generate(input_ids, max_tokens=args.G, verbose=True, temperature=args.t)
     text = tokenizer.decode(generated, skip_special_tokens=True)
     print("\033[32m" + text + "\033[0m")
     
