@@ -3,9 +3,9 @@ import torch
 from transformers.models.llama.modeling_llama import LlamaDecoderLayer
 import torch.nn.functional as F
 import gc
-from utils import apply_rotary_pos_emb, layer_norm, topp_temperature_decode
+from .utils import apply_rotary_pos_emb, layer_norm, topp_temperature_decode
 import flashinfer
-from attnserver import LSHSparseAttnServer, AttnServer
+from .attnserver import LSHSparseAttnServer, AttnServer
 class LLMLayer:
     def __init__(self, layer_idx) -> None:
         
