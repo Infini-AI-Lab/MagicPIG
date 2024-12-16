@@ -67,7 +67,7 @@ Recommended Python version: 3.9/3.10.
 
 **Commands:**
 
-    cd models
+    cd examples
     numactl -C 0-31,52-83 -m 0,1 \
     python generation.py \
     --model meta-llama/Meta-Llama-3.1-8B-Instruct \
@@ -97,7 +97,7 @@ Recommended Python version: 3.9/3.10.
 
 **Commands:**
 
-    cd models
+    cd examples
     numactl -C 0-31,52-83 -m 0,1 \
     python bench.py \
     --model meta-llama/Meta-Llama-3.1-8B-Instruct \
