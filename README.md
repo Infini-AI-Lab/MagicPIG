@@ -11,7 +11,7 @@ Zhuoming Chen<sup>1</sup>, Ranajoy Sadhukhan<sup>1</sup>, Zihao Ye<sup>2</sup>, 
 </div>
 
 <div align="center">
-[<a href="https://arxiv.org/abs/2410.16179">Paper</a>] | [<a href="www.lsh-ai.com">Blog</a>]
+[<a href="https://arxiv.org/abs/2410.16179">Paper</a>] | [<a href="www.lsh-ai.com/home">Blog</a>]
 </div>
 <br>
 
