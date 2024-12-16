@@ -1,5 +1,5 @@
 <div align="center">
-<h1><img src="assets/MGPF2.jpg" height="40px" align="top"/> MagicPIG-v0.2: LSH sampling<br>for Efficient LLM Generation
+<h1><img src="assets/MGPF2.png" height="40px" align="top"/> MagicPIG-v0.2: LSH sampling<br>for Efficient LLM Generation
 </h1>
 
 Zhuoming Chen<sup>1</sup>, Ranajoy Sadhukhan<sup>1</sup>, Zihao Ye<sup>2</sup>, Yang Zhou<sup>1</sup>, Jianyu Zhang<sup>3,4</sup>, Niklas Nolte<sup>4</sup>, <br> Yuandong Tian<sup>4</sup>, Matthijs Douze<sup>4</sup>, Leon Bottou<sup>3,4</sup>, Zhihao Jia<sup>1</sup>, Beidi Chen<sup>1</sup>
