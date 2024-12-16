@@ -118,7 +118,15 @@ Recommended Python version: 3.9/3.10.
  `--B`: Batch Size.
 
  `--K, --L`: LSH hyper-parameter (when K=0, we use full attention).
- 
+
+`numactl` can improve the throughput. On different CPU platforms, the OpenMP threads need to be manually reset to achieve the best performance (Now we use 64).
+
+`library/sparse_attention/sparse_attention.h:Line 10` : `ATTENTION_THREADS`
+
+`library/lsh/lsh.h:Line 12` : `LSH_THREADS`
+
+The number of threads is recommended to set as (or slightly smaller than) the number of physical CPU cores (not hyper-thread) to achieve the best performance.
+
 
 ## Evaluations
 
