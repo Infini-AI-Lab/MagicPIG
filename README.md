@@ -147,7 +147,7 @@ Currently, we support the following models.
 This will call the compiled lsh and sparse_attention_cpu to execute the proposed systems in the paper. **Require lsh and sparse_attention_cpu are successfully installed.**
 
 
-Not all users/developpers have AVX512 machines. **You can still test the accuracy of MagicPIG even if you cannot finish the installation.**.
+Not all users/developpers have AVX512 machines. **You can still test the accuracy of MagicPIG even if you cannot finish the installation. This is not for latency/throughput evaluations but mathematically equivalent algorithm implementation for accuracy evaluations.**
 
 We implement another two versions of MagicPIG for different purposes.
 
